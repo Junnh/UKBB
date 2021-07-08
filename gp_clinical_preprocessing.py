@@ -29,7 +29,7 @@ r2_i10 = pd.read_csv('r2_icd10.csv') # Read2-ICD10 mapping
 r2_i10 = r2_i10.drop([36664, 36665, 36666], axis=0)
 r2_i10 = r2_i10.rename(columns={'read_code':'read_2'})
 
-r2_i9 = pd.read_csv('r2_icd9.csv') # Read2-ICD mapping
+r2_i9 = pd.read_csv('r2_icd9.csv') # Read2-ICD9 mapping
 r2_i9 = r2_i9.drop([35661, 35662, 35663], axis=0)
 r2_i9 = r2_i9.rename(columns={'read_code':'read_2'})
 
@@ -114,6 +114,7 @@ read2_counts_df.columns = ['counts', 'read_2']
 merged2 = pd.merge(read2_counts_df, pure_r2, on='read_2', how='left')
 merged2.drop(['term_code'], axis=1, inplace=True)
 merged2.to_csv('Read2_sorted2_counts.csv', index=None)
+
 
 ### Type2 diabetes
 
