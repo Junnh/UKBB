@@ -88,7 +88,7 @@ sqlite3.Connection
 cursor = con.cursor()
 read_gp_processed.to_sql('gp_clinical', con) # table name = gp_clinical
 
-## sql check example
+## sql valid check
 cursor.execute("SELECT * FROM gp_clinical WHERE eid=1004070 ORDER BY event_dt")
 rows = cursor.fetchall() 
 for row in rows: 
@@ -114,6 +114,7 @@ read2_counts_df.columns = ['counts', 'read_2']
 merged2 = pd.merge(read2_counts_df, pure_r2, on='read_2', how='left')
 merged2.drop(['term_code'], axis=1, inplace=True)
 merged2.to_csv('sorted2_counts.csv', index=None)
+
 
 ### Type2 diabetes
 
