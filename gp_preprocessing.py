@@ -29,7 +29,7 @@ r2_i10 = pd.read_csv('r2_icd10.csv') # Read2-ICD10 mapping
 r2_i10 = r2_i10.drop([36664, 36665, 36666], axis=0)
 r2_i10 = r2_i10.rename(columns={'read_code':'read_2'})
 
-r2_i9 = pd.read_csv('r2_icd9.csv') # Read2-ICD mapping
+r2_i9 = pd.read_csv('r2_icd9.csv') # Read2-ICD9 mapping
 r2_i9 = r2_i9.drop([35661, 35662, 35663], axis=0)
 r2_i9 = r2_i9.rename(columns={'read_code':'read_2'})
 
