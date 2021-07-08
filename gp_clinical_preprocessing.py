@@ -113,7 +113,7 @@ read2_counts_df['code'] = read2_counts_df.index
 read2_counts_df.columns = ['counts', 'read_2']
 merged2 = pd.merge(read2_counts_df, pure_r2, on='read_2', how='left')
 merged2.drop(['term_code'], axis=1, inplace=True)
-merged2.to_csv('Read2_sorted2_counts.csv', index=None)
+merged2.to_csv('Read2_sorted_counts.csv', index=None)
 
 
 ### Type2 diabetes
