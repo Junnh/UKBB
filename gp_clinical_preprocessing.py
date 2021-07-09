@@ -83,7 +83,7 @@ read_gp_processed['event_dt'] = pd.to_datetime(read_gp_processed['event_dt'])
 
 
 ### make DB and check
-con = sqlite3.connect("/home/lrainsoul/GP/gp.db")
+con = sqlite3.connect("./gp.db")
 sqlite3.Connection
 cursor = con.cursor()
 read_gp_processed.to_sql('gp_clinical', con) # table name = gp_clinical
