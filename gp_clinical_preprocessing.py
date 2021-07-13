@@ -81,6 +81,16 @@ read_gp_processed.sort_index(axis=0, inplace=True)
 # convert date type
 read_gp_processed['event_dt'] = pd.to_datetime(read_gp_processed['event_dt'])
 
+### datetime preprocessing
+# drop null issue_date
+null_time_index = read_gp_processed[read_gp_processed['event_dt'].isnull()].index
+
+# drop error issue_date
+error_time_index = read_gp_processed[read_gp_processed['event_dt'].isin(['07/07/2037', '01/01/1901', '02/02/1902', '03/03/1903'])].index
+read_gp_processed.drop(np.union1d(null_time_index, error_time_index), axis=0, inplace=True)
+
+read_gp_processed.sort_values(by='event_dt', inplace=True)
+
 
 ### make DB and check
 con = sqlite3.connect("./gp.db")
@@ -88,12 +98,12 @@ sqlite3.Connection
 cursor = con.cursor()
 read_gp_processed.to_sql('gp_clinical', con) # table name = gp_clinical
 
-# db valid check
-cursor.execute("SELECT * FROM gp_clinical WHERE eid=1004070 ORDER BY event_dt")
-rows = cursor.fetchall() 
-for row in rows: 
-    print(row)
-con.close()
+## db valid check
+# cursor.execute("SELECT * FROM gp_clinical WHERE eid=1004070 ORDER BY event_dt")
+# rows = cursor.fetchall() 
+# for row in rows: 
+#     print(row)
+# con.close()
 
 
 ### Read code description counts
