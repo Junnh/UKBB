@@ -40,5 +40,5 @@ ps_read.sort_values(by='event_dt', inplace=True)
 # con = sqlite3.connect("/path/gp.db")
 # sqlite3.Connection
 # cursor = con.cursor()
-# read_gp_processed.to_sql('gp_prescription', con) # table name = gp_prescription
+# ps_read.to_sql('gp_prescription', con) # table name = gp_prescription
 
